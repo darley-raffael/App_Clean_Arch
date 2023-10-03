@@ -5,7 +5,7 @@ export default class UserRegisterController {
   constructor(readonly server: Elysia, useCase: RegisterUser) {
     server.post(
       "/users",
-      async ({ body }) => {
+      async ({ body, set }) => {
         const { name, email, password } = body;
         await useCase.execute({
           name,
@@ -13,8 +13,8 @@ export default class UserRegisterController {
           password,
         });
 
+        set.status = 201
         return {
-          status: 201,
           body: {
             message: "User created successfully",
           },

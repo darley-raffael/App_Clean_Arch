@@ -1,12 +1,22 @@
-import User from "../../core/user/model/User";
+import IUser from "../../core/user/model/User";
 import IUserRepository from "../../core/user/service/UserRepository";
 
 export default class UserRepositoryInMemory implements IUserRepository {
-  constructor(private readonly users: User[] = []) {}
-  findByEmail(email: string): Promise<User | null> {
-    throw new Error("Method not implemented.");
+  private readonly users: IUser[] = [];
+  async findByEmail(email: string): Promise<IUser | null> {
+    return this.users.find((user) => user.email === email) ?? null
   }
-  create(user: User): Promise<User> {
-    throw new Error("Method not implemented.");
+  async create(user: IUser): Promise<IUser> {
+    const newUser = {
+      id: crypto.randomUUID(),
+      ...user,
+    }
+
+    this.users.push(newUser)
+    return newUser
+  }
+
+  async findAll(): Promise<IUser[]> {
+    return this.users
   }
 }

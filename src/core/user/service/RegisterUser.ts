@@ -7,7 +7,7 @@ type Entry = {
   password: string;
 };
 export class RegisterUser implements IUseCase<Entry, void> {
-  constructor(private readonly repository: IUserRepository) {}
+  constructor(private readonly repository: IUserRepository) { }
   async execute(data: Entry): Promise<void> {
     const { name, email, password } = data;
 
