@@ -1,15 +1,13 @@
-# Elysia with Bun runtime
+# Princípios de Arquitetura Clean-Arch
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
+![Clean-Arch](./assets/image.png)
 
-## Development
-To start the development server run:
-```bash
-bun run dev
-```
+## Conceitos Básicos
 
-Open http://localhost:3000/ with your browser to see the result.
+### Entidade
+
+> Entidade dentro do Clean-Arch é um componente que faz parte do domínio da aplicação. É onde inserimos as regras de negócio.
+
+Características:
+
+-

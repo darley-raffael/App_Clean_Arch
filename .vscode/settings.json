@@ -1,9 +1,10 @@
 {
-  "cSpell.words": ["Elysia"],
+  "cSpell.words": ["elysia", "Elysia"],
   "material-icon-theme.folders.associations": {
     "adapters": "pipe",
     "core": "rules",
     "external": "tools",
-    "user": "admin"
+    "user": "admin",
+    "memory": "database"
   }
 }
