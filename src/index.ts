@@ -1,9 +1,11 @@
-import { Elysia } from "elysia";
-import { RegisterUser } from "./core/user/service/RegisterUser";
-import UserRegisterController from "./adapters/UserRegisterController";
 import UserRepositoryPrisma from "./external/prisma/repository/UserRepositoryPrisma";
-import ConsultUser from "./core/user/service/ConsultUser";
+import UserConsultByIdController from "./adapters/UserConsultByIdController";
 import UsersConsultControllers from "./adapters/UsersConsultControllers";
+import UserRegisterController from "./adapters/UserRegisterController";
+import ConsultUserById from "./core/user/service/ConsultUserById";
+import { RegisterUser } from "./core/user/service/RegisterUser";
+import ConsultUser from "./core/user/service/ConsultUser";
+import { Elysia } from "elysia";
 
 const app = new Elysia();
 
@@ -15,6 +17,10 @@ new UserRegisterController(app, userRegister);
 // Consult Router
 const userConsult = new ConsultUser(userRepository);
 new UsersConsultControllers(app, userConsult);
+
+// Consult By Id Router
+const consultUserById = new ConsultUserById(userRepository);
+new UserConsultByIdController(app, consultUserById);
 
 app.listen(3333, () => {
   console.log(
